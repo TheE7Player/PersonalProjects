@@ -86,20 +86,38 @@ The idea is simple, grab each song. Store it and flip it around, determine the d
 
 
 
-### Simple Graph:
-
 > Assume threshold is set at -60dbs
 
-```flowchart
-st=>start: Start Iteration
-op=>operation: Grab Meta Data
-op2=>operation: Load 1 second at the end
-cond=>condition: dbs > -60dbs
-
-add=>operation: Add song to list
-st->op->op2->cond
-
-cond(yes)->add->op
 ```
+SET THRESHOLD TO -60
+SET songs TO LIST OF STRING
+
+REPEAT
+    SET audio TO GET_NEXT_TRACK()
+    SET end TO audio.GET_LAST_SECOND()
+
+    IF end.GET_AVG_DB() > THRESHOLD THEN
+        songs.Add(audio)
+    END IF   
+UNTIL END OF LIST
+```
+
+So in english we:
+
+- Set the threshold (Where its mostly silent)
+
+- Create a list which contains strings of the files location
+
+- We loop through each song
+  
+  - We grab the information of the track
+  
+  - We then get the last few seconds of the track
+  
+  - Validate if the average dbs from the end goes past the threshold
+  
+  - If so, add it to the list and continue onwards
+
+
 
 
