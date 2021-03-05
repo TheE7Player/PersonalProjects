@@ -1,0 +1,5 @@
+GOAL: Find songs given in a folder to look if different music is playing at the end
+
+SOLUTION: Read the mp3 files (ffmpeg required in bin) and look at the end and determine if the wave gains
+
+NOTE: A virtual environment is required to run to make this work, once created use PIP to install from requirements.txt
