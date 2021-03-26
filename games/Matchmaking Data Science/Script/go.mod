@@ -1,0 +1,3 @@
+module CSGO_STATISTICS
+
+go 1.16
